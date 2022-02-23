@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Carrera;
+use App\Models\Periodo;
 use Illuminate\Http\Request;
 use App\Models\Persona;
 
@@ -137,7 +138,8 @@ class PersonaController extends Controller
     {
         $carrera = Carrera::find($request->carrera_id);
         $persona = Persona::find($id);
-        return view("admin.materia.asig_materias_persona", compact("carrera", "persona"));
+        $periodo = Periodo::get();
+        return view("admin.materia.asig_materias_persona", compact("carrera", "persona", "periodo"));
     }
 
     public function asignar(Request $request, $id)
@@ -147,7 +149,7 @@ class PersonaController extends Controller
         // N:M
 
         $persona = Persona::find($id);
-        $persona->materias()->attach($request->materias/*, ["periodo_id" => $request->periodo_id]*/);
+        $persona->materias()->attach($request->materias, ["periodo_id" => $request->periodo_id]);
 
         return redirect()->back();
     }

@@ -18,7 +18,7 @@ return new class extends Migration
             $table->string("nombre", 100);
             $table->integer("duracion")->nullable();
             $table->integer("gestion");
-            $table->text("descripcion")->nullabel();
+            $table->text("descripcion")->nullable();
             $table->timestamps();
             $table->softDeletes();
         });

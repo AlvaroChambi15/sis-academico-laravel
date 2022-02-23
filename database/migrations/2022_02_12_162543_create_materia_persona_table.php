@@ -18,11 +18,14 @@ return new class extends Migration
             // N : M
             $table->bigInteger("materia_id")->unsigned();
             $table->bigInteger("persona_id")->unsigned();
+            $table->bigInteger("periodo_id")->unsigned();
+
             $table->string("rol", 20)->default("estudiante");
             $table->integer("nota")->nullable();
 
             $table->foreign("materia_id")->references("id")->on("materias");
             $table->foreign("persona_id")->references("id")->on("personas");
+            $table->foreign("periodo_id")->references("id")->on("periodos");
             $table->timestamps();
         });
     }

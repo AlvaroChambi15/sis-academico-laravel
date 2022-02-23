@@ -43,7 +43,7 @@ Route::middleware(['auth'])->prefix('admin')->group(function () {
     Route::get("persona/{id}/asignacion_materias_personas", [PersonaController::class, "asig_materias_persona"])->name("asignacion_materias_personas");
     Route::post("persona/{id}/asignar", [PersonaController::class, "asignar"])->name("asignar");
 
-    Route::resource("carrera", CarreraController::class);
+    Route::resource("carrera", CarreraController::class)->middleware(["role:docente"]);
     Route::resource("aula", AulaController::class);
     Route::resource("periodo", PeriodoController::class);
     Route::resource("materia", MateriaController::class);

@@ -19,7 +19,7 @@ return new class extends Migration
             $table->string("sigla");
             $table->integer("semestre")->nullable();
             $table->bigInteger("materia_id")->unsigned()->nullable();
-            $table->text("descipcion")->nullable();
+            $table->text("descripcion")->nullable();
             // N materias : 1 carrera
             $table->bigInteger("carrera_id")->unsigned();
             $table->foreign("carrera_id")->references("id")->on("carreras");

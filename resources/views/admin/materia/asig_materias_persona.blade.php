@@ -35,6 +35,14 @@
                 <h5>Asigar Materias</h5>
                 <form action="{{ route('asignar', $persona->id) }}" method="POST">
                     @csrf
+
+                    <label for="">Seleccionar Periodo</label>
+                    <select name="periodo_id" id="" class="form-control">
+                        @foreach ($periodo as $p)
+                        <option value="{{ $p->id }}">{{ $p->nombre }}</option>
+                        @endforeach
+                    </select>
+
                     <table class="table table-striped">
                         <thead>
                             <tr>
